@@ -1,0 +1,52 @@
+# A Mining Permit allows a Miner to prospect
+# a given Permit Area, but the Miner must
+# pay for any damage
+
+PREFIX : <https://linked.data.gov.au/def/autho/>
+PREFIX ex: <http://example.com/>
+PREFIX gn: <https://linked.data.gov.au/def/gn/>
+PREFIX mautho: <https://linked.data.gov.au/def/mining-autho/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+ex:permitAreaX
+    a mautho:PermitArea ;
+    :hasAuthorisation ex:miningAct178 ;
+.
+
+ex:miningAct178
+    a :Authority ;
+    odrl:permission ex:prospectingRight ;
+    odrl:obligation ex:prospectingDuty ;
+.
+
+ex:prospectingRight
+    a :Authorisation ;
+    odrl:action
+        ex:prospectForMinerals ,
+        ex:conductGeologicalMapping ;
+    odrl:assignee :minerY ;
+    odrl:duty ex:prospectingDuty ;
+.
+
+ex:prospectForMinerals
+    a odrl:Action ;
+.
+
+ex:conductGeologicalMapping ;
+    a odrl:Action ;
+.
+
+:minerY
+    a odrl:Party ;
+.
+
+ex:prospectingDuty
+    a odrl:Duty ;
+    odrl:action ex:payForDamages ;
+.
+
+ex:payForDamages
+    a odrl:Action ;
+.
+

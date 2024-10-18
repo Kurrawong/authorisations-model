@@ -1,0 +1,37 @@
+# A Geographical Name is named by a Minister,
+# in accordance with a Place Names Act
+
+PREFIX : <https://linked.data.gov.au/def/autho/>
+PREFIX ex: <http://example.com/>
+PREFIX gn: <https://linked.data.gov.au/def/gn/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+gn:GeographicalName
+    rdfs:subclassOf :AuthorisedAsset ;
+.
+
+ex:kgari
+    a gn:GeographicalName ;
+    :hasAuthorisation ex:placeNamesAct1994 ;
+.
+
+ex:placeNamesAct1994
+    a :Authority ;
+    odrl:permission ex:naming ;
+.
+
+ex:naming
+    a :Authorisation ;
+    odrl:action ex:giveANameToAPlace ;
+    odrl:assignee :ministerForResources ;
+.
+
+ex:giveANameToAPlace
+    a odrl:Action ;
+.
+
+:ministerForResources
+    a odrl:Party ;
+.
+

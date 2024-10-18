@@ -1,0 +1,231 @@
+PREFIX : <https://linked.data.gov.au/def/autho/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX ont: <https://linked.data.gov.au/def/autho>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+odrl:action
+    a
+        rdf:Property ,
+        owl:ObjectProperty ,
+        skos:Concept ;
+    rdfs:label "Has Action"@en ;
+    rdfs:domain
+        [
+            a owl:Class ;
+            owl:unionOf (
+                :Rule
+                :Policy
+            ) ;
+        ] ;
+    rdfs:isDefinedBy odrl: ;
+    rdfs:range :Action ;
+    skos:definition "The operation relating to the Asset for which the Rule is being subjected."@en ;
+.
+
+odrl:assignee
+    a
+        rdf:Property ,
+        owl:ObjectProperty ,
+        skos:Concept ;
+    rdfs:label "Assignee"@en ;
+    rdfs:domain
+        [
+            a owl:Class ;
+            owl:unionOf (
+                :Rule
+                :Policy
+            ) ;
+        ] ;
+    rdfs:isDefinedBy odrl: ;
+    rdfs:range :Party ;
+    rdfs:subPropertyOf :function ;
+    skos:definition "The Party is the recipient of the Rule."@en ;
+.
+
+odrl:permission
+    a
+        rdf:Property ,
+        owl:ObjectProperty ,
+        skos:Concept ;
+    rdfs:label "Has Permission"@en ;
+    rdfs:domain :Policy ;
+    rdfs:isDefinedBy odrl: ;
+    rdfs:range :Permission ;
+    skos:definition "Relates an individual Permission to a Policy."@en ;
+.
+
+ont:
+    a owl:Ontology ;
+    owl:versionIRI :1.0 ;
+    owl:versionInfo "1.0 - Initial version" ;
+    schema:codeRepository <https://github.com/kurrawong/authorisations-model> ;
+    schema:creator <https://orcid.org/0000-0002-3884-3420> ;
+    schema:dateCreated "2024-10-18"^^xsd:date ;
+    schema:dateModified "2024-10-18"^^xsd:date ;
+    schema:description "A model that describes the authorisation of agents to conduct activities" ;
+    schema:name "Authorisations Model" ;
+    schema:primaryImageOfPage "Overview.svg" ;
+    schema:publisher <https://linked.data.gov.au/org/agldwg> ;
+.
+
+:Authorisation
+    a owl:Class ;
+    skos:example
+        """
+        # A Geographical Name is named by a Minister,
+        # in accordance with a Place Names Act
+
+        PREFIX : <https://linked.data.gov.au/def/autho/>
+        PREFIX ex: <http://example.com/>
+        PREFIX gn: <https://linked.data.gov.au/def/gn/>
+        PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        gn:GeographicalName
+            rdfs:subclassOf :AuthorisedAsset ;
+        .
+
+        ex:kgari
+            a gn:GeographicalName ;
+            :hasAuthorisation ex:placeNamesAct1994 ;
+        .
+
+        ex:placeNamesAct1994
+            a :Authority ;
+            odrl:permission ex:naming ;
+        .
+
+        ex:naming
+            a :Authorisation ;
+            odrl:action ex:giveANameToAPlace ;
+            odrl:assignee :ministerForResources ;
+        .
+
+        ex:giveANameToAPlace
+            a odrl:Action ;
+        .
+
+        :ministerForResources
+            a odrl:Party ;
+        .
+    """ ,
+    """
+        # A Mining Permit allows a Miner to prospect
+        # a given Permit Area, but the Miner must
+        # pay for any damage
+
+        PREFIX : <https://linked.data.gov.au/def/autho/>
+        PREFIX ex: <http://example.com/>
+        PREFIX gn: <https://linked.data.gov.au/def/gn/>
+        PREFIX mautho: <https://linked.data.gov.au/def/mining-autho/>
+        PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        ex:permitAreaX
+            a mautho:PermitArea ;
+            :hasAuthorisation ex:miningAct178 ;
+        .
+
+        ex:miningAct178
+            a :Authority ;
+            odrl:permission ex:prospectingRight ;
+            odrl:obligation ex:prospectingDuty ;
+        .
+
+        ex:prospectingRight
+            a :Authorisation ;
+            odrl:action
+                ex:prospectForMinerals ,
+                ex:conductGeologicalMapping ;
+            odrl:assignee :minerY ;
+            odrl:duty ex:prospectingDuty ;
+        .
+
+        ex:prospectForMinerals
+            a odrl:Action ;
+        .
+
+        ex:conductGeologicalMapping ;
+            a odrl:Action ;
+        .
+
+        :minerY
+            a odrl:Party ;
+        .
+
+        ex:prospectingDuty
+            a odrl:Duty ;
+            odrl:action ex:payForDamages ;
+        .
+
+        ex:payForDamages
+            a odrl:Action ;
+        .
+    """ ;
+    skos:scopeNote "Use thi class to indicate the actions that the Authorisation permits the Assignee" ;
+    schema:description "An Authorisation is a Rule that grants Actions to an assignee Agent over an Authorised Asset" ;
+    schema:name "Authorisation" ;
+.
+
+:duty
+    a
+        rdf:Property ,
+        owl:ObjectProperty ,
+        skos:Concept ;
+    rdfs:label "Has Duty"@en ;
+    rdfs:domain :Permission ;
+    rdfs:isDefinedBy odrl: ;
+    rdfs:range :Duty ;
+    skos:definition "Relates an individual Duty to a Permission."@en ;
+    skos:note "A Duty is a pre-condition which must be fulfilled in order to receive the Permission."@en ;
+.
+
+:hasAuthorisation
+    a owl:ObjectProperty ;
+    rdfs:domain :AuthorisedAsset ;
+    rdfs:range :Authority ;
+    skos:example "See examples for Authorisation" ;
+    skos:scopeNote "" ;
+    schema:description "Indicates the " ;
+    schema:name "" ;
+.
+
+<https://kurrawong.ai>
+    a schema:Organization ;
+    schema:name "KurrawongAI" ;
+    schema:url "https://kurrawong.ai" ;
+.
+
+:AuthorisedAsset
+    a owl:Class ;
+    skos:example "See the examples for Authorisation" ;
+    skos:scopeNote "This class MAY be directly instantiated but MAY also be only inferred, as the domain of the predicate:hasAuthorisation" ;
+    schema:description "An Authorised Asset is an Asset that is the subject of an Authorisation" ;
+    schema:name "Authorised Asset" ;
+.
+
+:Authority
+    a owl:Class ;
+    skos:example "See the examples for Authorisation" ;
+    skos:scopeNote "This class MUST be instantiated, either directly, or indirectly via a specialised subclass of it" ;
+    schema:description "An Authorisation is a Policy that grants Permissions" ;
+    schema:name "Authority" ;
+.
+
+<https://linked.data.gov.au/org/agldwg>
+    a schema:Organization ;
+    schema:name "Australian Government Linked Data Working Group" ;
+    schema:url "https://www.linked.data.gov.au" ;
+.
+
+<https://orcid.org/0000-0002-3884-3420>
+    a schema:Person ;
+    schema:affiliation <https://kurrawong.ai> ;
+    schema:email "nick@kurrawong.ai" ;
+    schema:name "Nicholas J. Car" ;
+.
