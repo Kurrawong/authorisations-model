@@ -23,7 +23,7 @@ jobs:
         cp README.md doc/
         cp model.html doc/
         cp model.ttl doc/
-        cp img/overview.png doc/img/
+        cp img/* doc/img/
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
