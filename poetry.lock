@@ -436,7 +436,7 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "6df3c2f79342f8ffc23b5dbe2417fd2b7ee9fbf34bdd94af390325b1e2d6cfaf"
+content-hash = "cf05101993ae6b644d38cd8f488b685b8ea67e8207893a5c114ea046fbc7e8bf"
 
 [metadata.files]
 anyio = [

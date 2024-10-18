@@ -12,6 +12,7 @@ python = "^3.11"
 pyshacl = "^0.26.0"
 jinja2 = "^3.1.4"
 pylode = "^3.2.0"
+markdown = "^3.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"
