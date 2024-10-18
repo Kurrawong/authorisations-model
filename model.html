@@ -296,6 +296,24 @@
             ]
           },
           {
+            "@id": "https://orcid.org/0000-0002-3884-3420",
+            "https://schema.org/affiliation": [
+              {
+                "@id": "https://kurrawong.ai"
+              }
+            ],
+            "https://schema.org/email": [
+              {
+                "@value": "nick@kurrawong.ai"
+              }
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "Nicholas J. Car"
+              }
+            ]
+          },
+          {
             "@id": "https://linked.data.gov.au/def/autho",
             "@type": [
               "https://schema.org/DefinedTermSet"
@@ -318,24 +336,6 @@
             "https://schema.org/publisher": [
               {
                 "@id": "https://linked.data.gov.au/org/agldwg"
-              }
-            ]
-          },
-          {
-            "@id": "https://orcid.org/0000-0002-3884-3420",
-            "https://schema.org/affiliation": [
-              {
-                "@id": "https://kurrawong.ai"
-              }
-            ],
-            "https://schema.org/email": [
-              {
-                "@value": "nick@kurrawong.ai"
-              }
-            ],
-            "https://schema.org/name": [
-              {
-                "@value": "Nicholas J. Car"
               }
             ]
           }
@@ -433,7 +433,23 @@
                   </div>
                 </dl>
               </div>
-              <div class="section" id="classes">
+              <div class="section" id="intro">       <h2>Introduction</h2>
+       <ol>
+       <li><a href="#purpose">Purpose</a></li>
+       <li><a href="#basic">Basic Concepts</a></li>
+       </ol>
+       <p><a id="purpose"></a></p>
+       <h3>1. Purpose</h3>
+       <p>The purpose of this model is to represent "authorisations" by which is meant:</p>
+       <blockquote>
+       <p>a Rule that grants Actions to an assignee Agent over an Authorised Asset</p>
+       </blockquote>
+       <p>This model is just a specialisation of the <a href="https://www.w3.org/TR/odrl-model/">Open Data Rights Language (ODRL)</a> model, but it was though necessary to make this model, rather than to just point to ODRL for use, for while ODRL work perfectly well for the scenarios exemplified here (see BAsic Concepts for expected use below), ODRL's own examples are all oriented elsewhere - to the use of data objects.</p>
+       <p>This model aims to use names for elements and descriptions of them that are more intuitive within its target domains.</p>
+       <p><a id="basic"></a></p>
+       <h3>2. Basic Concepts</h3>
+       <p>Typical use is expected to be modelling of permissions granting to people and companies for activities such as mining prospecting and the modelling of powers of government.</p>
+       <p>The things granting the authorisation are Authorities: laws, policies, regulations etc.</p></div><div class="section" id="classes">
                 <h2>Classes</h2>
                 <img src="img/geoname.svg" width="50%"/>
                 <br />
@@ -693,12 +709,12 @@
                       </th>
                       <td>
                         <span>
-                          <a href="#Rule">Rule</a>
+                          <a href="#Policy">Policy</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                         <span class="cardinality">or</span>
                         <span>
-                          <a href="#Policy">Policy</a>
+                          <a href="#Rule">Rule</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                       </td>
@@ -995,6 +1011,19 @@
                   <h4>
                     <a href="#metadata">Metadata</a>
                   </h4>
+                </li>
+                <li>
+                  <h4>
+                    <a href="#intro">Introduction</a>
+                  </h4>
+                  <ul class="second">
+                    <li>
+                      <a href="#purpose">Purpose</a>
+                    </li>
+                    <li>
+                      <a href="#basic">Basic Concepts</a>
+                    </li>
+                  </ul>                  
                 </li>
                 <li>
                   <h4>
