@@ -1,13 +1,17 @@
 import re
 from pathlib import Path
 from pylode.profiles.ontpub import OntPub
+from rdflib import Graph
 from textwrap import indent
 from markdown import markdown
 
 REPO_DIR = Path(__file__).parent.parent.resolve()
 
 # initialise
-od = OntPub(ontology=REPO_DIR / "model.ttl")
+g = Graph().parse(REPO_DIR / "model.ttl")
+g.parse(REPO_DIR / "labels.ttl")
+
+od = OntPub(ontology=g)
 
 # make HTML
 html = od.make_html()
@@ -21,8 +25,10 @@ html = indent(re.sub(r"<h1>(.*)</h1>", name_plus_img, html), "        ")
 # add examples images
 html = re.sub('<h2>Classes</h2>', '''<h2>Classes</h2>
                 <img src="img/geoname.svg" width="50%"/>
+                <p style="font-style:italic;">Geographical Naming example</p>
                 <br />
                 <img src="img/mining-permit.svg" width="50%"/>
+                <p style="font-style:italic;">Mining Permit example</p>
                 <br />''', html)
 
 # add Introduction
@@ -57,6 +63,8 @@ html = re.sub(
                 </li>''',
     html
 )
+
+html = re.sub(r'''<img alt="" src="img/odrl.svg" />''', '''<img alt="" src="img/odrl.svg" style="width:40%;" />''', html)
 
 # write HTML to file
 open(REPO_DIR / "model.html", "w").write(html)

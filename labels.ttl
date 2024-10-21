@@ -1,0 +1,5 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+<https://www.w3.org/TR/odrl-model/>
+    rdfs:label "ODRL Information Model 2.2" ;
+.

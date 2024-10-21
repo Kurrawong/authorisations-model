@@ -296,24 +296,6 @@
             ]
           },
           {
-            "@id": "https://orcid.org/0000-0002-3884-3420",
-            "https://schema.org/affiliation": [
-              {
-                "@id": "https://kurrawong.ai"
-              }
-            ],
-            "https://schema.org/email": [
-              {
-                "@value": "nick@kurrawong.ai"
-              }
-            ],
-            "https://schema.org/name": [
-              {
-                "@value": "Nicholas J. Car"
-              }
-            ]
-          },
-          {
             "@id": "https://linked.data.gov.au/def/autho",
             "@type": [
               "https://schema.org/DefinedTermSet"
@@ -336,6 +318,24 @@
             "https://schema.org/publisher": [
               {
                 "@id": "https://linked.data.gov.au/org/agldwg"
+              }
+            ]
+          },
+          {
+            "@id": "https://orcid.org/0000-0002-3884-3420",
+            "https://schema.org/affiliation": [
+              {
+                "@id": "https://kurrawong.ai"
+              }
+            ],
+            "https://schema.org/email": [
+              {
+                "@value": "nick@kurrawong.ai"
+              }
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "Nicholas J. Car"
               }
             ]
           }
@@ -442,18 +442,24 @@
        <h3>1. Purpose</h3>
        <p>The purpose of this model is to represent "authorisations" by which is meant:</p>
        <blockquote>
-       <p>a Rule that grants Actions to an assignee Agent over an Authorised Asset</p>
+       <p>"a Rule that grants Actions to an assignee Agent over an Authorised Asset"</p>
        </blockquote>
        <p>This model is just a specialisation of the <a href="https://www.w3.org/TR/odrl-model/">Open Data Rights Language (ODRL)</a> model, but it was though necessary to make this model, rather than to just point to ODRL for use, for while ODRL work perfectly well for the scenarios exemplified here (see BAsic Concepts for expected use below), ODRL's own examples are all oriented elsewhere - to the use of data objects.</p>
        <p>This model aims to use names for elements and descriptions of them that are more intuitive within its target domains.</p>
+       <p>All the elements of this model are either ODRL model elements or have defined relationships to them.</p>
+       <p><img alt="" src="img/odrl.svg" style="width:40%;" /><br />
+       <em>All classes and predicates of this model related to their</em><br />
+       <em>more generalised superclasses and predicates in the ODRL model.</em></p>
        <p><a id="basic"></a></p>
        <h3>2. Basic Concepts</h3>
        <p>Typical use is expected to be modelling of permissions granting to people and companies for activities such as mining prospecting and the modelling of powers of government.</p>
        <p>The things granting the authorisation are Authorities: laws, policies, regulations etc.</p></div><div class="section" id="classes">
                 <h2>Classes</h2>
                 <img src="img/geoname.svg" width="50%"/>
+                <p style="font-style:italic;">Geographical Naming example</p>
                 <br />
                 <img src="img/mining-permit.svg" width="50%"/>
+                <p style="font-style:italic;">Mining Permit example</p>
                 <br />
                 <div class="property entity" id="Authorisation">
                   <h3>Authorisation
@@ -468,6 +474,14 @@
                     </tr>
                     <tr>
                       <th>
+                        <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+                      </th>
+                      <td>
+                        <a href="#autho">Authorisations Model</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
                         <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
                       </th>
                       <td><p>An Authorisation is a Rule that grants Actions to an assignee Agent over an Authorised Asset</p></td>
@@ -476,7 +490,7 @@
                       <th>
                         <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#scopeNote" title="A note that helps to clarify the meaning and/or the use of a concept. Defined in SKOS Vocabulary">Scope Note</a>
                       </th>
-                      <td><p>Use thi class to indicate the actions that the Authorisation permits the Assignee</p></td>
+                      <td><p>Use this class to indicate the actions that the Authorisation permits the Assignee</p></td>
                     </tr>
                     <tr>
                       <th>
@@ -597,6 +611,14 @@
                     </tr>
                     <tr>
                       <th>
+                        <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+                      </th>
+                      <td>
+                        <a href="#autho">Authorisations Model</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
                         <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
                       </th>
                       <td><p>An Authorised Asset is an Asset that is the subject of an Authorisation</p></td>
@@ -621,7 +643,7 @@
                       </th>
                       <td>
                         <span>
-                          <a href="#hasAuthorisation"></a>
+                          <a href="#hasAuthorisation">has authorisation</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                       </td>
@@ -637,6 +659,14 @@
                       <th>IRI</th>
                       <td>
                         <code>https://linked.data.gov.au/def/autho/Authority</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+                      </th>
+                      <td>
+                        <a href="#autho">Authorisations Model</a>
                       </td>
                     </tr>
                     <tr>
@@ -665,7 +695,7 @@
                       </th>
                       <td>
                         <span>
-                          <a href="#hasAuthorisation"></a>
+                          <a href="#hasAuthorisation">has authorisation</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                       </td>
@@ -694,7 +724,7 @@
                         <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
                       </th>
                       <td>
-                        <a href="http://www.w3.org/ns/odrl/2/">odrl:</a>
+                        <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2</a>
                       </td>
                     </tr>
                     <tr>
@@ -709,12 +739,12 @@
                       </th>
                       <td>
                         <span>
-                          <a href="#Policy">Policy</a>
+                          <a href="#Rule">Rule</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                         <span class="cardinality">or</span>
                         <span>
-                          <a href="#Rule">Rule</a>
+                          <a href="#Policy">Policy</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                       </td>
@@ -745,7 +775,7 @@
                         <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
                       </th>
                       <td>
-                        <a href="http://www.w3.org/ns/odrl/2/">odrl:</a>
+                        <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2</a>
                       </td>
                     </tr>
                     <tr>
@@ -768,12 +798,12 @@
                       </th>
                       <td>
                         <span>
-                          <a href="#Policy">Policy</a>
+                          <a href="#Rule">Rule</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                         <span class="cardinality">or</span>
                         <span>
-                          <a href="#Rule">Rule</a>
+                          <a href="#Policy">Policy</a>
                           <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span>
                       </td>
@@ -804,7 +834,7 @@
                         <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
                       </th>
                       <td>
-                        <a href="http://www.w3.org/ns/odrl/2/">odrl:</a>
+                        <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2</a>
                       </td>
                     </tr>
                     <tr>
@@ -831,8 +861,8 @@
                     </tr>
                   </table>
                 </div>
-                <div class="property entity" id="HasDuty">
-                  <h3>Has Duty
+                <div class="property entity" id="hasduty">
+                  <h3>has duty
                     <sup class="sup-op" title="OWL Object Property">op</sup>
                   </h3>
                   <table>
@@ -847,27 +877,27 @@
                         <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
                       </th>
                       <td>
-                        <a href="http://www.w3.org/ns/odrl/2/">odrl:</a>
+                        <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2</a>
                       </td>
                     </tr>
                     <tr>
                       <th>
                         <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
                       </th>
-                      <td><p>Relates an individual Duty to a Permission.</p></td>
+                      <td><p>Relates an individual Duty to a Permission</p></td>
                     </tr>
                     <tr>
                       <th>
                         <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#note" title="A general note, for any purpose. Defined in SKOS Vocabulary">Note</a>
                       </th>
-                      <td><p>A Duty is a pre-condition which must be fulfilled in order to receive the Permission.</p></td>
+                      <td><p>A Duty is a pre-condition which must be fulfilled in order to receive the Permission</p></td>
                     </tr>
                     <tr>
                       <th>
                         <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
                       </th>
                       <td>
-                        <a href="#Permission">Permission</a>
+                        <a href="http://www.w3.org/ns/odrl/2/Permission">odrl:Permission</a>
                       </td>
                     </tr>
                     <tr>
@@ -881,7 +911,7 @@
                   </table>
                 </div>
                 <div class="property entity" id="hasAuthorisation">
-                  <h3>
+                  <h3>has authorisation
                     <sup class="sup-op" title="OWL Object Property">op</sup>
                   </h3>
                   <table>
@@ -893,15 +923,17 @@
                     </tr>
                     <tr>
                       <th>
-                        <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+                        <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
                       </th>
-                      <td><p>Indicates the </p></td>
+                      <td>
+                        <a href="#autho">Authorisations Model</a>
+                      </td>
                     </tr>
                     <tr>
                       <th>
-                        <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#scopeNote" title="A note that helps to clarify the meaning and/or the use of a concept. Defined in SKOS Vocabulary">Scope Note</a>
+                        <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
                       </th>
-                      <td></td>
+                      <td><p>Indicates the </p></td>
                     </tr>
                     <tr>
                       <th>
@@ -909,6 +941,14 @@
                       </th>
                       <td>
                         <pre>See examples for Authorisation</pre>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+                      </th>
+                      <td>
+                        <a href="http://www.w3.org/ns/odrl/2/hasPolicy">odrl:hasPolicy</a>
                       </td>
                     </tr>
                     <tr>
@@ -943,9 +983,17 @@
                   <dd>
                     <code>https://linked.data.gov.au/def/autho/</code>
                   </dd>
+                  <dt id="dcterms">dcterms</dt>
+                  <dd>
+                    <code>http://purl.org/dc/terms/</code>
+                  </dd>
                   <dt id="odrl">odrl</dt>
                   <dd>
                     <code>http://www.w3.org/ns/odrl/2/</code>
+                  </dd>
+                  <dt id="odrlm">odrlm</dt>
+                  <dd>
+                    <code>https://www.w3.org/TR/odrl-model/</code>
                   </dd>
                   <dt id="ont">ont</dt>
                   <dd>
@@ -954,6 +1002,10 @@
                   <dt id="owl">owl</dt>
                   <dd>
                     <code>http://www.w3.org/2002/07/owl#</code>
+                  </dd>
+                  <dt id="prov">prov</dt>
+                  <dd>
+                    <code>http://www.w3.org/ns/prov#</code>
                   </dd>
                   <dt id="rdf">rdf</dt>
                   <dd>
@@ -1056,10 +1108,10 @@
                       <a href="#HasPermission">Has Permission</a>
                     </li>
                     <li>
-                      <a href="#HasDuty">Has Duty</a>
+                      <a href="#hasduty">has duty</a>
                     </li>
                     <li>
-                      <a href="#hasAuthorisation"></a>
+                      <a href="#hasAuthorisation">has authorisation</a>
                     </li>
                   </ul>
                 </li>
@@ -1072,13 +1124,22 @@
                       <a href="#"></a>
                     </li>
                     <li>
+                      <a href="#dcterms">dcterms</a>
+                    </li>
+                    <li>
                       <a href="#odrl">odrl</a>
+                    </li>
+                    <li>
+                      <a href="#odrlm">odrlm</a>
                     </li>
                     <li>
                       <a href="#ont">ont</a>
                     </li>
                     <li>
                       <a href="#owl">owl</a>
+                    </li>
+                    <li>
+                      <a href="#prov">prov</a>
                     </li>
                     <li>
                       <a href="#rdf">rdf</a>
